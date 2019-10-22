@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Example</title>
+</head>
+<body>
+    <header class="header">
+        Your site header
+    </header>
+    <div class="main">
+        <p>Your site content before embedded form viewer...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <!-- You can choose any unique id for viewer integration   -->
+        <div id="embedded-form-viewer"></div>
+        <p>Your site content after embedded form viewer...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+    <footer class="footer">
+        Your site footer
+    </footer>
+
+    <!-- require script -->
+    <script src="vw.js"></script>
+    <!-- initialization of the embedded form viewer with your own configuration   -->
+    <script>
+        // this function just for example - you can use your own function to handle each type of actions
+        var logger = function (payload) {
+            console.log(payload);
+        };
+        <!-- this code you may insert in your page which contained embedded form viewer or elsewhere in your js code -->
+        vw.init({
+            appKey: 'ddfdfdesGTRd',
+            authToken: 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBWjQ3S2gyNkhnbUVabFdhckN3NnREYUo0STR3YkhhayIsImV4cCI6MTU3MTY2NjM1NzMyMiwiaWF0IjoxNTcxNjQ0NzU3fQ.YCeTc65E1ZvTJ4niJgcA97hSwEzp8XTJ75ILnT2AG51eHLeZAgqtbTn_oDudalsI',
+            // displayInfoHeader: true, // it is false by default
+            width: '100%',
+            height: '750px',
+            frameBorder: '0',
+            parentId: 'embedded-form-viewer',
+            frameId: 'someId',
+            frameSrc: 'http://localhost:18181/viewer/FED_aG6ECk4yielT',
+            loadFormHandler: function (payload) {
+                // window.document.body.setAttribute('style', 'background: red;');
+                logger(payload);
+            },
+            saveAndNextHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: green;');
+                logger(payload);
+            },
+            finishHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: blue;');
+                logger(payload);
+            },
+            nextHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: yellow;');
+                logger(payload);
+            },
+            oneMoreHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: grey;');
+                logger(payload);
+            },
+            goBackHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: red;');
+                logger(payload);
+            },
+            reloadHandler: function (payload) {
+                window.document.body.setAttribute('style', 'background: white;');
+                logger(payload);
+            }
+        });
+    </script>
+</body>
+</html>
